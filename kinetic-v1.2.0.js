@@ -165,13 +165,13 @@ Kinetic.prototype.listen = function(){
         
         that.setMousePosition(e);
         if (typeof(canvasOnmouseover) == typeof(Function)) {
-            canvasOnmouseover();
+            canvasOnmouseover(e);
         }
     };
     this.canvas.onmouseout = function(){
         that.mousePos = null;
         if (typeof(canvasOnmouseout) == typeof(Function)) {
-            canvasOnmouseout();
+            canvasOnmouseout(e);
         }
     };
     this.canvas.onmousemove = function(e){
@@ -181,29 +181,29 @@ Kinetic.prototype.listen = function(){
         that.reset(e);
         
         if (typeof(canvasOnmousemove) == typeof(Function)) {
-            canvasOnmousemove();
+            canvasOnmousemove(e);
         }
     };
     this.canvas.onmousedown = function(e){
         if (!e) {
             e = window.event;
         }
-        that.mouseDown = true;
         that.reset(e);
+        that.mouseDown = true;
         
         if (typeof(canvasOnmousedown) == typeof(Function)) {
-            canvasOnmousedown();
+            canvasOnmousedown(e);
         }
     };
     this.canvas.onmouseup = function(e){
         if (!e) {
             e = window.event;
         }
-        that.mouseUp = true;
         that.reset(e);
+        that.mouseUp = true;
         
         if (typeof(canvasOnmouseup) == typeof(Function)) {
-            canvasOnmouseup();
+            canvasOnmouseup(e);
         }
     };
 };
@@ -650,3 +650,4 @@ window.requestAnimFrame = (function(callback){
         window.setTimeout(callback, 1000 / 60);
     };
 })();
+
