@@ -168,7 +168,10 @@ Kinetic.prototype.listen = function(){
             canvasOnmouseover(e);
         }
     };
-    this.canvas.onmouseout = function(){
+    this.canvas.onmouseout = function(e){
+        if (!e) {
+            e = window.event;
+        }
         that.mousePos = null;
         if (typeof(canvasOnmouseout) == typeof(Function)) {
             canvasOnmouseout(e);
